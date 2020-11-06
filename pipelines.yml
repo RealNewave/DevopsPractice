@@ -1,0 +1,36 @@
+resources:
+  - name: DevopsPractice
+    type: GitRepo
+    configuration:
+      gitProvider: GitHub
+      path: RealNewave/DevopsPractice
+
+pipelines:
+  -name: MyFirstPipeline
+  configuration:
+    environmentVariables:
+      readOnly:
+        MY_MESSAGE: '"Hello World"'
+  steps:
+    - name: build
+      type: MvnBuild
+      configuration:
+        sourceLocation: .
+          mvnCommand: clean install -ntp
+          configFileLocation: .
+          configFileName: mvn-art-config
+          inputResources:
+            - name: DevopsPractice
+          integrations:
+            -name: GitHub
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+                versions:
+                  - "11"
+        execution:
+          onStart:
+            - javac -version
+            - mvn --version
