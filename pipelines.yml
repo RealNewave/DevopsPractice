@@ -18,7 +18,7 @@ pipelines:
         inputResources:
           - name: DevopsPractice
         integrations:
-          - name: GitHub
+          - name: DevopsRepository
         runtime:
           type: image
           image:
