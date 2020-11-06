@@ -6,12 +6,8 @@ resources:
       path: RealNewave/DevopsPractice
 
 pipelines:
-  -name: MyFirstPipeline
-  configuration:
-    environmentVariables:
-      readOnly:
-        MY_MESSAGE: '"Hello World"'
-  steps:
+  - name: MyFirstPipeline
+    steps:
     - name: build
       type: MvnBuild
       configuration:
