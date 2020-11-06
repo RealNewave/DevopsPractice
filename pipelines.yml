@@ -16,21 +16,21 @@ pipelines:
       type: MvnBuild
       configuration:
         sourceLocation: .
-          mvnCommand: clean install -ntp
-          configFileLocation: .
-          configFileName: mvn-art-config
-          inputResources:
-            - name: DevopsPractice
-          integrations:
-            -name: GitHub
-          runtime:
-            type: image
-            image:
-              auto:
-                language: java
-                versions:
-                  - "11"
-        execution:
-          onStart:
-            - javac -version
-            - mvn --version
+        mvnCommand: clean install -ntp
+        configFileLocation: .
+        configFileName: mvn-art-config
+        inputResources:
+          - name: DevopsPractice
+        integrations:
+          -name: GitHub
+        runtime:
+          type: image
+          image:
+            auto:
+              language: java
+              versions:
+                - "11"
+      execution:
+        onStart:
+          - javac -version
+          - mvn --version
