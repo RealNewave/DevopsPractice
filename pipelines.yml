@@ -1,9 +1,15 @@
 resources:
-  - name: DevopsPractice
+  - name: DevopsGit
     type: GitRepo
     configuration:
       gitProvider: GitHub
       path: RealNewave/DevopsPractice
+  - name: DevopsArtifactory
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: DevopsRepository
+      buildName: DevopsPractice
+      buildNumber: 1
 
 pipelines:
   - name: MyFirstPipeline
